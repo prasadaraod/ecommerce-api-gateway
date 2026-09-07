@@ -7,9 +7,10 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  REGION: us-central1
+  DEPLOY_REGION: us-central1
+  REGISTRY_REGION: asia-south1
   SERVICE_NAME: ecommerce-api-gateway
-  IMAGE_NAME: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/ecommerce-repo/ecommerce-api-gateway
+  IMAGE_NAME: asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/ecommerce-repo/ecommerce-api-gateway
 
 jobs:
   build-and-deploy:
@@ -27,7 +28,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Configure Docker for Artifact Registry
-        run: gcloud auth configure-docker asia-south1-docker.pkg.dev
+        run: gcloud auth configure-docker ${{ env.REGISTRY_REGION }}-docker.pkg.dev
 
       - name: Build and Push Docker Image
         run: |
@@ -40,6 +41,6 @@ jobs:
           gcloud run deploy $SERVICE_NAME \
             --image $IMAGE_NAME:${{ github.sha }} \
             --platform managed \
-            --region $REGION \
+            --region $DEPLOY_REGION \
             --allow-unauthenticated \
             --port 8080

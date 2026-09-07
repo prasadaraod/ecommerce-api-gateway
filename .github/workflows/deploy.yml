@@ -7,9 +7,9 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  REGION: asia-south1
+  REGION: us-central1
   SERVICE_NAME: ecommerce-api-gateway
-  IMAGE_NAME: asia-south1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/ecommerce-repo/ecommerce-api-gateway
+  IMAGE_NAME: us-central1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/ecommerce-repo/ecommerce-api-gateway
 
 jobs:
   build-and-deploy:

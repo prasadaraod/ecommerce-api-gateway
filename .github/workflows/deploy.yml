@@ -44,4 +44,4 @@ jobs:
             --region $DEPLOY_REGION \
             --allow-unauthenticated \
             --port 8080 \
-            --set-env-vars AUTH_SERVICE_URL=https://ecommerce-auth-service-899451810356.us-central1.run.app,PRODUCT_SERVICE_URL=https://ecommerce-product-service-899451810356.us-central1.run.app
+            --set-env-vars AUTH_SERVICE_URL=https://ecommerce-auth-service-899451810356.us-central1.run.app,PRODUCT_SERVICE_URL=https://ecommerce-product-service-899451810356.us-central1.run.app,CART_SERVICE_URL=https://ecommerce-cart-service-899451810356.us-central1.run.app
